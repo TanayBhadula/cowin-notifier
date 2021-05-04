@@ -7,9 +7,9 @@ from datetime import date
 
 port = 587  # For starttls
 smtp_server = "smtp.gmail.com"
-sender_email = "axelrod3301@gmail.com"
-receiver_email = "tanaybhadula2002@gmail.com"
-password = 'ucazorkmfoztuppz'
+sender_email = ""
+receiver_email = ""
+password = ''
 message = """\
 Subject: -- SLOT AVAILABLE --
 
@@ -22,14 +22,14 @@ while True:
     d1 = today.strftime("%d-%m-%Y")
     
     parameters = {
-        "pincode": 273002,
+        "pincode": '',  #enter the area pin
         "date": d1
     }
     response = requests.get('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin', params=parameters).text
     response_info = json.loads(response)
     center_num= len(response_info['centers'])
     for i in range(center_num):
-        if response_info['centers'][i]['center_id'] == 692603:
+        if response_info['centers'][i]['center_id'] == '':   #enter the center id to get specific result
             print(response_info['centers'][i]['center_id'])
             print(response_info['centers'][i]['name'])
             session_num= len(response_info['centers'][i]['sessions'])
